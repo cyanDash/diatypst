@@ -487,3 +487,83 @@
   content
 
 }
+
+// Custom First Slide with Two Logos
+// This file creates a custom title slide with logos at upper left and right corners
+// Import this into main.typ and set first-slide: false in slides.with()
+
+// Custom First Slide Layout with Two Logos
+#let custom-first-slide(
+  title: "Your Title",
+  subtitle: "Your Subtitle",
+  author: "Author Name",
+  date: "",
+  logo-left: "../.github/SBND-color.jpg",
+  logo-right: "../.github/UoS logo.jpeg",
+  logo-height: 1.2cm,
+  title-color: blue.darken(60%),
+  bg-color: white,
+) = {
+    set page(
+    footer: none,
+    header: none,
+    margin: 0cm,
+    height: 10.5cm,         // height for medium layout
+    width: 16/9*10.5cm,     // width for 16/9 ratio
+  )
+    // Custom First Slide:
+    block(
+          inset: 0.8cm,
+          fill: title-color,
+          width: 100%,
+          height: 60%,
+          )[
+            #place(left, align(left)[#image(logo-left, height: logo-height)])
+            #place(right, align(right)[#image(logo-right, height: logo-height)])
+
+            // Centered title
+            #align(bottom)[
+              #text(size: 2.5em, weight: "bold", fill: white)[#title]
+
+            ]
+          ]
+block(
+      height: 30%,
+      width: 100%,
+      inset: (top:0cm, bottom:0.8cm, x:0.8cm),
+      )[
+      #text(size: 1.4em, fill: blue.darken(50%), weight: "bold")[#subtitle]
+      #linebreak()
+      #text(size: 1.1em)[#author],
+      #text(size: 1.1em)[#date]
+      ]
+  
+  //  Now end the page and reset the page counter for the rest of the slides
+  pagebreak()
+  counter(page).update(1)
+}
+
+// Custom function to create a list that reveals items one by one across multiple slides. More commonly known as "pauses".
+
+#let reveal-list(title, items) = {
+  // This is a helper function to create a list that reveals items one by one across multiple slides.
+  for i in range(1, items.len() + 1) {
+    [
+      #if i > 1 [
+        #counter(page).update(n => n - 1)
+        #set page(numbering: none)
+      ]
+
+      == #title
+      #for item in items.slice(0, i) [
+        #list(
+          tight: false,
+          item)
+      ]
+
+      // #if i < items.len() [
+      //   #pagebreak()
+      // ]
+    ]
+  }
+}
