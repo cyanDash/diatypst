@@ -78,7 +78,7 @@
               outset: (x: 0.5 * space)
             )[
               #set text(1.4em, weight: "bold", fill: bg-color)
-              #v(space / 2)
+              #v(space / 3) // changed for aesthetics
               #heading.body
               #if not heading.location().page() == page [
                 #{numbering("(i)", page - heading.location().page() + 1)}
@@ -86,7 +86,7 @@
             ]
           } else if (theme == "normal") {
             set text(1.4em, weight: "bold", fill: title-color)
-            v(space / 2)
+            v(space / 3)  // changed for aesthetics
             heading.body
             if not heading.location().page() == page [
               #{numbering("(i)", page - heading.location().page() + 1)}
@@ -242,7 +242,7 @@
       set align(right + top)
       context {
         let last = counter(page).final().first()
-        let current = here().page()
+        let current = counter(page).get().first()
         set text(weight: "bold")
         set text(fill: white) if theme == "full"
         set text(fill: title-color) if theme == "normal"
@@ -326,13 +326,12 @@
   // SLIDES STYLING --------------------------------------------------
   // Section Slides
   show heading.where(level: 1): x => {
-    section_counter.step()
     set page(header: none,footer: none, margin: 0cm)
     set align(horizon)
       grid(
-        columns: (1fr, 3fr),
+        columns: (0fr, 3fr),
         inset: 10pt,
-        align: (right,left),
+        align: (right, center),
         fill: (title-color, bg-color),
         [#block(height: 100%)],[#text(1.2em, weight: "bold", fill: title-color)[#x]]
       )

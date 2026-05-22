@@ -1,4 +1,4 @@
-![Diatypst Logo (Dark)](./screenshots/wide_dark.png)
+![wide_dark](./screenshots/wide_dark.png)
 
 # diatypst
 
@@ -24,13 +24,13 @@ Here is an example of a *diatypst* presentation
 
 | Title Slide                                     | Section                                             |
 | ----------------------------------------------- | --------------------------------------------------- |
-| ![Default Title Slide](screenshots/Example-Title.png) | ![Default Section Slide](screenshots/Example-Section.png) |
+| ![Example-Title](screenshots/Example-Title.png) | ![Example-Section](screenshots/Example-Section.png) |
 
 | Content (Normal Theme)                          | Content (Full Theme)                                        |
 | ----------------------------------------------- | ----------------------------------------------------------- |
-| ![A content slide with the Normal Theme applied](screenshots/Example-Slide.png) | ![A content slide with the Full Theme applied](./screenshots/Full-Example-Slide.png) |
+| ![Example-Slide](screenshots/Example-Slide.png) | ![Example-Full-Slide](./screenshots/Full-Example-Slide.png) |
 
-These example slides and a usage guide are available in the `example` Folder on GitHub as a [.typ file](https://github.com/skriptum/diatypst/blob/72d3e4ad352e26593da489804719537ea3362d50/example/example.typ) and a compiled PDF ([normal Theme](https://raw.githubusercontent.com/skriptum/diatypst/72d3e4ad352e26593da489804719537ea3362d50/example/example.pdf), [full Theme](https://raw.githubusercontent.com/skriptum/diatypst/72d3e4ad352e26593da489804719537ea3362d50/example/example_full.pdf)). 
+These example slides and a usage guide are available in the `example` Folder on GitHub as a [.typ file](https://github.com/skriptum/diatypst/blob/main/example/example.typ) and a compiled PDF ([normal Theme](https://raw.githubusercontent.com/skriptum/diatypst/refs/heads/main/example/example.pdf), [full Theme](https://raw.githubusercontent.com/skriptum/diatypst/refs/heads/main/example/example_full.pdf)). 
 
 *The Full Theme more closely resembles a Beamer Theme, while the normal theme is a bit simpler (without being boring)*
 
@@ -39,7 +39,7 @@ These example slides and a usage guide are available in the `example` Folder on 
 To start a presentation, initialize it in your typst document:
 
 ```typst
-#import "@preview/diatypst:0.9.3": *
+#import "@preview/diatypst:0.9.1": *
 #show: slides.with(
   title: "Diatypst", // Required
   subtitle: "easy slides in typst",
@@ -107,7 +107,7 @@ For many presentations, it is quite useful to be able to control the appearance 
 To do that, you have to add your custom slide before calling `slides.with`. You need to also adjust the sizing of your custom slide to the ratio and layout you chose. 
 
 ```typst
-#import "@preview/diatypst:0.9.3": *
+#import "@preview/diatypst:0.9.1": *
 
 #set page(
   footer: none, header: none, margin: 0cm,
@@ -153,4 +153,4 @@ this template is inspired by [slydst](https://github.com/glambrechts/slydst), an
 
 The word *Diatypst* is inspired by the ease of use of a [**Dia**-projektor](https://de.wikipedia.org/wiki/Diaprojektor) (German for Slide Projector, left) and the [Diatype](https://en.wikipedia.org/wiki/Diatype_(machine)) (right)
 
-![Diaprojektor and Diatype](./screenshots/explanation.png)
+![explanation](./screenshots/explanation.png)
