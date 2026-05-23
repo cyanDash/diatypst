@@ -498,8 +498,8 @@
   subtitle: "Your Subtitle",
   author: "Author Name",
   date: "",
-  logo-left: "../.github/SBND-color.jpg",
-  logo-right: "../.github/UoS logo.jpeg",
+  logo-left: none,
+  logo-right: none,
   logo-height: 1.2cm,
   title-color: blue.darken(60%),
   bg-color: white,
@@ -518,8 +518,14 @@
           width: 100%,
           height: 60%,
           )[
-            #place(left, align(left)[#image(logo-left, height: logo-height)])
-            #place(right, align(right)[#image(logo-right, height: logo-height)])
+            #if logo-left != none [
+             #place(left, align(left)[#logo-left])
+            ]
+            #if logo-right != none [
+              #place(right, align(right)[#logo-right])
+            ]
+            // #place(left, align(left)[#image(logo-left, height: logo-height)])
+            // #place(right, align(right)[#image(logo-right, height: logo-height)])
 
             // Centered title
             #align(bottom)[
