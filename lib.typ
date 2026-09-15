@@ -549,11 +549,14 @@ block(
   counter(page).update(1)
 }
 
-// Custom function to create a list that reveals items one by one across multiple slides. More commonly known as "pauses".
-
-#let reveal-list(title, items) = {
-  // This is a helper function to create a list that reveals items one by one across multiple slides.
-  for i in range(1, items.len() + 1) {
+// Generalised overlay function ("pause" à la LaTeX's \pause): reveals
+// arbitrary content progressively across multiple slides that share the
+// same title and page number. Each entry in `blocks` can be any content
+// (a paragraph, a figure, a grid, ...) not just a list item; the final
+// slide shows everything. `reveal-list` below is sugar for the common
+// case of a plain bulleted list.
+#let reveal(title, blocks) = {
+  for i in range(1, blocks.len() + 1) {
     [
       #if i > 1 [
         #counter(page).update(n => n - 1)
@@ -561,15 +564,15 @@ block(
       ]
 
       == #title
-      #for item in items.slice(0, i) [
-        #list(
-          tight: false,
-          item)
+      #for item in blocks.slice(0, i) [
+        #item
       ]
-
-      // #if i < items.len() [
-      //   #pagebreak()
-      // ]
     ]
   }
+}
+
+// Custom function to create a list that reveals items one by one across multiple slides. More commonly known as "pauses".
+
+#let reveal-list(title, items) = {
+  reveal(title, items.map(item => list(tight: false, item)))
 }
