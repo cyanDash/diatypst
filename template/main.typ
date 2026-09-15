@@ -1,4 +1,4 @@
-#import "@preview/diatypst:0.9.1": *
+#import "@local/diatypst:0.9.1": *
 
 #set page(
   footer: none, header: none, margin: 0cm,
@@ -16,9 +16,8 @@
   subtitle: "Your Subtitle",
   date: "Your Date",
   author: "Author Name",
-  logo-left: image("plots/UoS logo.jpeg", height: 2cm),
+  logo-left: image("plots/SBND-color.jpg", height: 2cm),
   logo-right: image("plots/UoS logo.jpeg", height: 2cm),
-  logo-height: 2cm,
   title-color: blue.darken(60%),
 )
 
